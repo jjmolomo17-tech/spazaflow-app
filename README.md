@@ -24,4 +24,6 @@ npm install
 npm run dev
 npm test
 ```
+
+## Stitch designs link: https://stitch.google.com/projects/4352248796539663779
 *Known issues: Initial setup phase; core features in development.*
