@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Invoicing Portal — SpazaFlow Dev</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'light-primary': '#15803D',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#DCFCE7',
+        'light-on-primary-container': '#14532D',
+        'light-secondary': '#0F172A',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#E2E8F0',
+        'light-on-secondary-container': '#0F172A',
+        'light-tertiary': '#1E293B',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#F1F5F9',
+        'light-on-tertiary-container': '#0F172A',
+        'light-background': '#F8FAFC',
+        'light-on-background': '#0F172A',
+        'light-surface': '#F8FAFC',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F8FAFC',
+        'light-surface-container': '#F1F5F9',
+        'light-surface-container-high': '#E2E8F0',
+        'light-surface-container-highest': '#CBD5E1',
+        'light-on-surface': '#0F172A',
+        'light-on-surface-variant': '#475569',
+        'light-outline': '#94A3B8',
+        'light-outline-variant': '#E2E8F0',
+        'light-error': '#DC2626',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FEE2E2',
+        'light-on-error-container': '#991B1B',
+        'light-warning': '#B45309',
+        'light-on-warning': '#FFFFFF',
+        'light-warning-container': '#FEF3C7',
+        'light-on-warning-container': '#92400E',
+        'light-success': '#15803D',
+        'light-on-success': '#FFFFFF',
+        'light-success-container': '#DCFCE7',
+        'light-on-success-container': '#14532D',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '24px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+      },
+      fontSize: {
+        'headline-lg': ['24px', { lineHeight: '32px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg-mobile': ['22px', { lineHeight: '28px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-sm': ['18px', { lineHeight: '24px', letterSpacing: '-0.1px', fontWeight: '600' }],
+        'title-md': ['15px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['15px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['13px', { lineHeight: '18px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '200ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-background text-light-on-background font-body antialiased">
+  <div class="min-h-[884px] flex flex-col max-w-md mx-auto bg-light-background pb-24" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- App Shell Header -->
+    <header class="sticky top-0 z-20 bg-light-surface-container-lowest border-b border-light-outline-variant px-page-margin py-gutter-md flex items-center justify-between gap-gutter-md">
+      <div class="flex items-center gap-gutter-sm min-w-0">
+        <div class="w-9 h-9 rounded bg-light-secondary text-light-on-secondary flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">terminal</span>
+        </div>
+        <div class="min-w-0">
+          <h1 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface truncate">SpazaFlow Dev</h1>
+          <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">Client Invoicing Portal</p>
+        </div>
+      </div>
+
+      <!-- COMPONENT: badge-role -->
+      <span data-component-id="badge-role" data-component-type="badge" data-component-variant="status" role="status" class="inline-flex items-center gap-gutter-xs px-gutter-sm py-gutter-xs rounded-full bg-light-secondary text-light-on-secondary font-label text-label-sm shrink-0">
+        <span data-design-text-token="label-sm">Lead Dev</span>
+      </span>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-page-margin py-gutter-lg flex flex-col gap-section">
+
+      <!-- Billing Summary KPI Pair -->
+      <section aria-label="Invoice totals" class="grid grid-cols-2 gap-gutter-md items-stretch">
+        <!-- COMPONENT: card-elevated -->
+        <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="h-full bg-light-surface-container-lowest border border-light-outline-variant rounded-md p-gutter-lg flex flex-col justify-between gap-gutter-sm">
+          <header class="flex items-center justify-between gap-gutter-xs">
+            <h2 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant">Outstanding</h2>
+            <span class="material-symbols-outlined text-[20px] text-light-error" aria-hidden="true">schedule</span>
+          </header>
+          <div>
+            <p data-design-text-token="headline-lg-mobile" class="font-headline text-headline-lg-mobile text-light-error tabular-nums">R 12,450.00</p>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant mt-gutter-xs">2 open invoices</p>
+          </div>
+        </article>
+
+        <!-- COMPONENT: card-elevated -->
+        <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="h-full bg-light-surface-container-lowest border border-light-outline-variant rounded-md p-gutter-lg flex flex-col justify-between gap-gutter-sm">
+          <header class="flex items-center justify-between gap-gutter-xs">
+            <h2 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant">Paid (Nov)</h2>
+            <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">check_circle</span>
+          </header>
+          <div>
+            <p data-design-text-token="headline-lg-mobile" class="font-headline text-headline-lg-mobile text-light-primary tabular-nums">R 28,900.00</p>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant mt-gutter-xs">3 settled</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Action Header -->
+      <div class="flex items-center justify-between gap-gutter-md">
+        <h2 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface">Client invoices</h2>
+
+        <!-- COMPONENT: button-with-icon -->
+        <button data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" type="button" class="min-h-[48px] px-gutter-lg py-gutter-sm rounded bg-light-primary text-light-on-primary font-label text-label-md inline-flex items-center justify-center gap-gutter-xs shrink-0 hover:opacity-95 transition-opacity duration-state-change">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span>
+          <span data-design-text-token="label-md">New Invoice</span>
+        </button>
+      </div>
+
+      <!-- Invoice List -->
+      <section aria-label="Invoice list" class="flex flex-col gap-gutter-md">
+
+        <!-- Invoice 1: Overdue -->
+        <!-- COMPONENT: card-action -->
+        <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="bg-light-surface-container-lowest border border-light-outline-variant rounded-md p-gutter-lg flex flex-col gap-gutter-md">
+          <div class="flex items-start justify-between gap-gutter-md">
+            <div class="min-w-0">
+              <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Soweto Fresh Mart</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">#INV-1041 · Due 19 Nov</p>
+            </div>
+            <div class="flex flex-col items-end gap-gutter-xs shrink-0">
+              <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">R 6,200.00</span>
+              <!-- COMPONENT: badge-error -->
+              <span data-component-id="badge-error" data-component-type="badge" data-component-variant="error" role="status" class="inline-flex items-center px-gutter-sm py-0.5 rounded-full bg-light-error-container text-light-on-error-container font-label text-label-sm">
+                <span data-design-text-token="label-sm">Overdue</span>
+              </span>
+            </div>
+          </div>
+          <footer class="flex items-center gap-gutter-sm pt-gutter-sm border-t border-light-outline-variant">
+            <button type="button" class="flex-1 min-h-[44px] px-gutter-md rounded bg-light-primary text-light-on-primary font-label text-label-md hover:opacity-95 transition-opacity duration-state-change">
+              <span data-design-text-token="label-md">Send Reminder</span>
+            </button>
+            <button type="button" class="min-h-[44px] px-gutter-md rounded bg-light-surface-container text-light-on-surface border border-light-outline-variant font-label text-label-md hover:bg-light-surface-container-high transition-colors duration-state-change">
+              <span data-design-text-token="label-md">Mark Paid</span>
+            </button>
+          </footer>
+        </article>
+
+        <!-- Invoice 2: Pending -->
+        <!-- COMPONENT: card-action -->
+        <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="bg-light-surface-container-lowest border border-light-outline-variant rounded-md p-gutter-lg flex flex-col gap-gutter-md">
+          <div class="flex items-start justify-between gap-gutter-md">
+            <div class="min-w-0">
+              <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Kasi Corner Spaza</h3>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">#INV-1042 · Due 27 Nov</p>
+            </div>
+            <div class="flex flex-col items-end gap-gutter-xs shrink-0">
+              <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">R 6,250.00</span>
+              <!-- COMPONENT: badge-warning -->
+              <span data-component-id="badge-warning" data-component-type="badge" data-component-variant="warning" role="status" class="inline-flex items-center px-gutter-sm py-0.5 rounded-full bg-light-warning-container text-light-on-warning-container font-label text-label-sm">
+                <span data-design-text-token="label-sm">Due in 4d</span>
+              </span>
+            </div>
+          </div>
+          <footer class="flex items-center gap-gutter-sm pt-gutter-sm border-t border-light-outline-variant">
+            <button type="button" class="flex-1 min-h-[44px] px-gutter-md rounded bg-light-surface-container text-light-on-surface border border-light-outline-variant font-label text-label-md hover:bg-light-surface-container-high transition-colors duration-state-change">
+              <span data-design-text-token="label-md">View Invoice</span>
+            </button>
+            <button type="button" class="min-h-[44px] px-gutter-md rounded bg-light-primary-container text-light-on-primary-container font-label text-label-md hover:opacity-90 transition-opacity duration-state-change">
+              <span data-design-text-token="label-md">Mark Paid</span>
+            </button>
+          </footer>
+        </article>
+
+        <!-- Invoice 3: Paid -->
+        <article class="bg-light-surface-container-lowest border border-light-outline-variant rounded-md p-gutter-lg flex items-center justify-between gap-gutter-md">
+          <div class="min-w-0">
+            <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Maboneng Tuckshop</h3>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">#INV-1039 · Paid 12 Nov</p>
+          </div>
+          <div class="flex flex-col items-end gap-gutter-xs shrink-0">
+            <span data-design-text-token="title-md" class="font-title text-title-md text-light-primary tabular-nums">R 14,500.00</span>
+            <!-- COMPONENT: badge-success -->
+            <span data-component-id="badge-success" data-component-type="badge" data-component-variant="success" role="status" class="inline-flex items-center px-gutter-sm py-0.5 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">
+              <span data-design-text-token="label-sm">Paid</span>
+            </span>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <!-- Persistent 3-Tab Developer Portal Bottom Navigation -->
+    <nav aria-label="Developer portal navigation" class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md z-30 bg-light-surface-container-lowest border-t border-light-outline-variant px-gutter-xs py-gutter-xs grid grid-cols-3 items-center">
+      <a href="#tasks" class="min-h-[56px] flex flex-col items-center justify-center gap-0.5 text-light-on-surface-variant hover:text-light-on-surface font-label text-label-sm">
+        <span class="material-symbols-outlined text-[22px]" aria-hidden="true">checklist</span>
+        <span data-design-text-token="label-sm">Tasks</span>
+      </a>
+      <a href="#snippets" class="min-h-[56px] flex flex-col items-center justify-center gap-0.5 text-light-on-surface-variant hover:text-light-on-surface font-label text-label-sm">
+        <span class="material-symbols-outlined text-[22px]" aria-hidden="true">code</span>
+        <span data-design-text-token="label-sm">Snippets</span>
+      </a>
+      <a href="#invoices" aria-current="page" class="min-h-[56px] flex flex-col items-center justify-center gap-0.5 text-light-primary font-label text-label-sm">
+        <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">receipt_long</span>
+        <span data-design-text-token="label-sm">Invoices</span>
+      </a>
+    </nav>
+
+  </div>
+
+
+</body></html>
