@@ -5,7 +5,7 @@
 | Field | Answer |
 | :--- | :--- |
 | **Product name** | SpazaFlow |
-| **Author(s)** | Mahlape Joy Molomo |
+| **Author(s)** | Joy Molomo |
 | **Course code and cohort** | Melsoft Academy — Software Development Cohort (Nov 2026) |
 | **Link to original app idea** | `Business.md` in repository root |
 | **GitHub repository** | `https://github.com` |
