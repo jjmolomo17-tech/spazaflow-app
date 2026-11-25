@@ -2,7 +2,7 @@
 
 **A fast, mobile-first Point-of-Sale (POS) and inventory management web application built for independent spaza shops.**
 
-🔗 **Live Demo:** [https://vercel.com/jjmolomo17-techs-projects/spazaflow-app/6ipLpbrNXC2jo3nyZMd1WTREULBD]  
+🔗 **Live Demo:** [https://spazaflow-app.vercel.app](https://spazaflow-app.vercel.app)  
 🎨 **UI/UX Designs:** [View Stitch Design System](./docs/designs/spazaflow_design_system.md)
 
 ---
@@ -52,14 +52,9 @@ NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
-### 4. Run the development server
+### 4. Run the development server & tests
 ```bash
 npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### 5. Run automated tests
-```bash
 npm test
 ```
 
@@ -90,59 +85,3 @@ npm test
 * **Offline-First Sync:** Queue POS sales locally during load-shedding or network drops and auto-sync once reconnected.
 * **Customer Credit ("Book") Ledger:** Digital tracking for trusted community customers buying on credit.
 * **WhatsApp Restock Alerts:** Automated daily low-stock summaries sent straight to the shop owner's phone.
-
-
-# SpazaFlow 🏪
-
-**A mobile-friendly Point-of-Sale (POS) and inventory management web application built to help independent spaza shops prevent stockouts and track daily sales in real time.**
-
-🔗 **Live Demo:** https://vercel.app  
-🎨 **Design System & Screens:** [View Design Docs](./docs/designs/spazaflow_design_system.md)
-
----
-
-## 📸 Screenshots
-*(Tip: If you have `.png` screenshots in `docs/designs/`, link them here—for example:)*
-* **Login & Role Access:** `./docs/designs/login.png`
-* **Inventory Dashboard:** `./docs/designs/dashboard.png`
-* **Quick POS Checkout:** `./docs/designs/pos.png`
-
----
-
-## 🚀 Key Features
-* **Role-Based Authentication:** Secure Owner and Counter Cashier login powered by Supabase Auth.
-* **Quick POS Checkout:** Fast product search, real-time cart calculation, and instant sale recording.
-* **Inventory Management:** Track stock levels, add/update items, and prevent stockouts with automatic stock deduction on checkout.
-* **Business Rules Validation:** Unit and component tests powered by Vitest.
-
----
-
-## 🛠️ Tech Stack
-* **Frontend:** Next.js, React, TypeScript, Tailwind CSS
-* **Backend & Auth:** Supabase (PostgreSQL & Row-Level Security)
-* **Testing:** Vitest
-* **Deployment:** Vercel
-
----
-
-## 💻 Local Setup
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com
-   cd spazaflow-app
-   ```
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-3. **Configure environment variables:**
-   Create a `.env.local` file in the root directory:
-   ```env
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
-4. **Run the app & tests:**
-   ```bash
-   npm run dev
-   npm test
-   ```
